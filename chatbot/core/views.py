@@ -2,7 +2,7 @@ import json
 from django.http.response import HttpResponse
 from django.views.generic import View
 from django.conf import settings
-from core.utlis import parse_and_send_fb_message
+from core.helpers.utlis import parse_and_send_fb_message
 EXCLUDE_TEXT = ('Would You like to search books by title?',  "Would You like to search books by goodread's ID?")
 
 
