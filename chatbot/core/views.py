@@ -3,8 +3,8 @@ from django.http.response import HttpResponse
 from django.views.generic import View
 from django.conf import settings
 from core.helpers.utlis import parse_and_send_fb_message
-EXCLUDE_TEXT = ('Would You like to search books by title?',  "Would You like to search books by goodread's ID?")
-
+from core.helpers.message_processing import MessageProcessing
+from core.tasks import book_suggest_bg_task
 
 class FBWebHookView(View):
 
@@ -26,3 +26,7 @@ class FBWebHookView(View):
                     if message['message'].get('text'):
                         parse_and_send_fb_message(fb_user_id, message['message'])
         return HttpResponse("Success", status=200)
+
+    def put(self, request, *args, **kwargs):
+        # books = book_suggest_bg_task.delay(sender_id,23208863)
+        return HttpResponse(books, status=200)
