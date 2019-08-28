@@ -120,11 +120,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 FB_ENDPOINT = 'https://graph.facebook.com/v4.0/'
-PAGE_ACCESS_TOKEN = ""
-VERIFY_TOKEN = ""
-GOODREAD_API_KEY = ""
-WATSON_NLP_API_KEY = ""
-WATSON_NLP_URL = ""
+PAGE_ACCESS_TOKEN = os.environ.get('PAGE_ACCESS_TOKEN')
+VERIFY_TOKEN = os.environ.get('VERIFY_TOKEN')
+GOODREAD_API_KEY = os.environ.get('GOODREAD_API_KEY')
+WATSON_NLP_API_KEY = os.environ.get('WATSON_NLP_API_KEY')
+WATSON_NLP_URL = os.environ.get('WATSON_NLP_URL')
 
 CELERY_BROKER_URL = 'amqp://localhost'
 CELERY_TIMEZONE = 'Asia/Karachi'

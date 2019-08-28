@@ -5,7 +5,9 @@ billiard==3.6.1.0
 celery==4.3.0
 certifi==2019.6.16
 chardet==3.0.4
+coverage==4.5.4
 Django==2.2.4
+django-dotenv==1.4.2
 flower==0.9.3
 goodreads-api-client==0.1.0.dev4
 gunicorn==19.9.0

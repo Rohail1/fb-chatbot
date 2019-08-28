@@ -2,9 +2,12 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import dotenv
 
 
 def main():
+    env_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env')
+    dotenv.read_dotenv(env_file)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chatbot.settings')
     try:
         from django.core.management import execute_from_command_line
