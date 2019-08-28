@@ -1,0 +1,3 @@
+[run]
+source=./chatbot
+omit=venv/*
