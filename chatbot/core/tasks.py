@@ -19,8 +19,6 @@ def book_suggest_bg_task(sender_id, book_id):
         elif score['sentiment']['document']['label'] == 'negative':
             scores['negative'] += 1
 
-    print(scores)
     is_recommended = scores['positive'] >= scores['negative']
     response = MESSAGES.get('RECOMMAND_BOOK') if is_recommended else MESSAGES.get('NOT_RECOMMAND_BOOK')
-    print(response)
     Facebook.send_message(sender_id, response)

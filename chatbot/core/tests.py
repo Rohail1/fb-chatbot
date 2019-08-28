@@ -2,10 +2,10 @@ import json
 from django.test import SimpleTestCase
 from collections import OrderedDict
 from bs4.element import Tag
-from celery.contrib.testing.worker import start_worker
 from core import tasks
 from core.helpers.goodread import GoodReadService
 from core.helpers.message_processing import MessageProcessing
+from core.helpers.ibm_watson import NLPService
 
 
 class GoodReadTest(SimpleTestCase):
@@ -39,13 +39,6 @@ class GoodReadTest(SimpleTestCase):
 
 
 class MessageProcessingTest(SimpleTestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.celery_worker = start_worker(app)
-        cls.celery_worker.__enter__()
-
 
     def test_is_greeting(self):
         message = {
@@ -115,3 +108,20 @@ class MessageProcessingTest(SimpleTestCase):
         self.assertTrue(isinstance(response, dict))
         self.assertIn('text', response)
         self.assertEqual(response['text'], "Please enter the goodread's ID.")
+
+
+class NLPServiceTest(SimpleTestCase):
+
+    def test_get_sentiments(self):
+        review = 'I really enjoyed reading this book, The writer could not have wrote it better'
+        sentiments = NLPService.get_sentiments(review)
+        self.assertTrue(isinstance(sentiments, dict))
+
+
+class CeleryTasksTest(SimpleTestCase):
+
+    def test_book_suggest_bg_task(self):
+        sender_id = 1234354
+        book_id = 1128434
+        buy_or_not = tasks.book_suggest_bg_task(sender_id, book_id)
+        self.assertEqual(buy_or_not, None)
