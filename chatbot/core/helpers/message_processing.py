@@ -1,6 +1,5 @@
 from core.helpers.messages import MESSAGES
 from core.helpers.goodread import GoodReadService
-from core.helpers.ibm_watson import NLPService
 from core.tasks import book_suggest_bg_task
 
 
