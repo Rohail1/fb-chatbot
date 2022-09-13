@@ -8,7 +8,7 @@ chardet==3.0.4
 coverage==4.5.4
 Django==2.2.8
 django-dotenv==1.4.2
-flower==0.9.3
+flower==1.2.0
 goodreads-api-client==0.1.0.dev4
 gunicorn==19.9.0
 ibm-cloud-sdk-core==0.5.1
